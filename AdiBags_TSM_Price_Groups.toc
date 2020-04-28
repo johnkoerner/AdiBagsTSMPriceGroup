@@ -1,0 +1,10 @@
+## Interface: 62000
+
+## Title: AdiBags - Filter for TSM by Price
+## Notes: Adds Pricing Groups to AdiBags based on the selected price source.
+## Author: Negative0
+## Version: v1.0
+
+## Dependencies: AdiBags, TradeSkillMaster
+
+AdiBags_TSM_Price_Groups.lua
