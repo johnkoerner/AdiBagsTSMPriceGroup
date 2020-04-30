@@ -3,9 +3,13 @@
     "tasks": [
       {
         "type": "shell",
-        "name": "Copy Files",
         "command": ".\\scripts\\deploy.ps1",
         "label": "Deploy"
+      },
+      {
+        "label": "Package",
+        "type": "shell",
+        "command": ".\\scripts\\package.ps1"
       }
     ]
   }
