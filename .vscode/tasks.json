@@ -1,0 +1,11 @@
+{
+    "version": "0.2.0",
+    "tasks": [
+      {
+        "type": "shell",
+        "name": "Copy Files",
+        "command": ".\\scripts\\deploy.ps1",
+        "label": "Deploy"
+      }
+    ]
+  }
