@@ -4,4 +4,4 @@ if (Test-Path -Path ".\.output") {
 
 mkdir ".output"
 
-Compress-Archive -Path ".\src\*" -DestinationPath ".\.output\AdiBagsTSMPriceGroup.zip"
+Compress-Archive -Path ".\AdiBags_TSM_Price_Groups" -DestinationPath ".\.output\AdiBagsTSMPriceGroup.zip"
