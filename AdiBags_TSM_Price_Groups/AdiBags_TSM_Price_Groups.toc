@@ -1,9 +1,9 @@
-## Interface: 90001
+## Interface: 90205
 
 ## Title: AdiBags - Filter for TSM by Price
 ## Notes: Adds Pricing Groups to AdiBags based on the selected price source.
 ## Author: Negative0
-## Version: v1.4
+## Version: v1.5
 
 ## Dependencies: AdiBags, TradeSkillMaster
 
