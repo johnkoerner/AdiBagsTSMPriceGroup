@@ -1,4 +1,4 @@
-## Interface: 90205
+## Interface: 100002
 
 ## Title: AdiBags - Filter for TSM by Price
 ## Notes: Adds Pricing Groups to AdiBags based on the selected price source.
