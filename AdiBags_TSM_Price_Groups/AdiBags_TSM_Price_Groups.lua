@@ -138,6 +138,17 @@ local function byItemLevel(level)
 
 end
 
+local function logItem(slotData) 
+
+  print("GUID:" .. slotData.guid)
+  print("itemId:" .. slotData.itemId)
+  print("link:" .. slotData.link)
+  print("name:" .. slotData.name)
+  print("class:" .. slotData.class)
+
+end
+
+
 
 local lookup = {
   dbRegionMarketAvg = 'DBRegionMarketAvg',
@@ -154,13 +165,21 @@ local lookup = {
 
 local setNames = {}
 function setFilter:Filter(slotData)
+   -- logItem(slotData)
     local itemID, itemType, _, _, _, itemClassID  = GetItemInfoInstant(slotData.itemId)
-    
+
+    -- Extract some goddies from the link.  Source of find string: https://wowwiki-archive.fandom.com/wiki/ItemLink
+    -- We do this so we can get the Id value that is needed to generate the pet string for TSM.  The itemID that comes
+    -- back from AdiBags is the generic pet cage id. Parsing the link gives us the ID that TSM needs.
+    local _, _, Color, Ltype, idFromLink, Enchant, Gem1, Gem2, Gem3, Gem4,
+    Suffix, Unique, LinkLvl, Name = string.find(slotData.link,
+    "|?c?f?f?(%x*)|?H?([^:]*):?(%d+):?(%d*):?(%d*):?(%d*):?(%d*):?(%d*):?(%-?%d*):?(%-?%d*):?(%d*):?(%d*):?(%-?%d*)|?h?%[?([^%[%]]*)%]?|?h?|?r?")
+
     local itemString = "i:" .. itemID
 
+    -- We need to handle pets specially.  17 is the pet class id.
     if (itemClassID== 17) then
-      local name = C_PetJournal.GetPetInfoByItemID(itemID)
-      itemString = 'p:' .. itemID .. ":1:1"
+      itemString = "p:" .. idFromLink;
     end
 
     local priceSource = lookup[self.db.profile.priceSource]
@@ -170,9 +189,8 @@ function setFilter:Filter(slotData)
       priceSource = 'DBRegionsaleRate*100'
     end
 
-  
     local price = TSM_API.GetCustomPriceValue(priceSource,itemString)
-
+    
     -- Non-gold numbers need custom processing
     if (priceSource == 'NumExpires') then
       return byExpires(price)
