@@ -18,6 +18,15 @@ jobs:
       - name: Upload the artifact
         uses: actions/upload-artifact@v3
         with:
-          name: code-coverage-report
+          name: SourceForge-Artifact
           path: .output/AdiBags_TSM_Price_Groups.zip
+      - name: Upload to SourceForge-Artifact
+        uses: itsmeow/curseforge-upload@v3
+        with:
+          file_path: ".output/AdiBags_TSM_Price_Groups.zip"
+          game_endpoint: "wow"
+          game_versions: "10.0.2"
+          release_type: "alpha"
+          project_id: "379893"
+          token: "${{ secrets.CF_TOKEN }}"
         
