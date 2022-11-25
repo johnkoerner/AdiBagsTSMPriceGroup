@@ -10,7 +10,7 @@ jobs:
     steps:
       - run: mkdir .output
       - name: Zip It Up
-        run: zip -r .output/AdiBags_TSM_Price_Groups.zip ./AdiBags_TSM_Price_Groups 
+        run: zip -r .output/AdiBags_TSM_Price_Groups.zip ./AdiBags_TSM_Price_Groups/
       - name: Upload the artifact
         uses: actions/upload-artifact@v3
         with:
