@@ -1,4 +1,4 @@
-name: Validate Version Changes
+name: Zip and Publish
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: 
   pull_request:
@@ -16,3 +16,18 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+  Zip-Content:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Zip It Up
+        uses: vimtor/action-zip@v1
+          with:
+            files: AdiBags_TSM_Price_Groups/
+            recursive: true
+            dest: .output/AdiBags_TSM_PriceGroups.zip
+      - name: Upload the artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: code-coverage-report
+        path: .output/AdiBags_TSM_PriceGroups.zip
+        
