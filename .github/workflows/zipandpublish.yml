@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Zip It Up
-        run: zip -r .output/AdiBags_TSM_PriceGroups.zip ./AdiBags_TSM_PriceGroups 
+        run: zip -r .output/AdiBags_TSM_PriceGroups.zip  . -i ./AdiBags_TSM_PriceGroups 
       - name: Upload the artifact
         uses: actions/upload-artifact@v3
         with:
