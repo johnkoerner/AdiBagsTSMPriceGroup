@@ -20,6 +20,9 @@ jobs:
         with:
           name: SourceForge-Artifact
           path: .output/AdiBags_TSM_Price_Groups.zip
+      - name: Read CHANGELOG file
+        id: getchangelog
+        run: echo "::set-output name=changelog::$(cat CHANGELOG.MD)"
       - name: Upload to SourceForge-Artifact
         uses: itsmeow/curseforge-upload@v3
         with:
@@ -29,4 +32,5 @@ jobs:
           release_type: "alpha"
           project_id: "379893"
           token: "${{ secrets.CF_TOKEN }}"
+          changelog: "${{ steps.getchangelog.outputs.changelog }}"
         

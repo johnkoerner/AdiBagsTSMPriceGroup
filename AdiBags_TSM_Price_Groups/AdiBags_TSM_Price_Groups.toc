@@ -3,7 +3,7 @@
 ## Title: AdiBags - Filter for TSM by Price
 ## Notes: Adds Pricing Groups to AdiBags based on the selected price source.
 ## Author: Negative0
-## Version: v1.5
+## Version: v1.6
 
 ## Dependencies: AdiBags, TradeSkillMaster
 
