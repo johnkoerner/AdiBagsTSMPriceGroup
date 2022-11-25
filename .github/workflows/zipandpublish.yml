@@ -20,11 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Zip It Up
-        uses: "vimtor/action-zip@v1"
-        with:
-          files: AdiBags_TSM_Price_Groups/**
-          recursive: true
-          dest: .output/AdiBags_TSM_PriceGroups.zip
+        run: zip -r .output/AdiBags_TSM_PriceGroups.zip ./AdiBags_TSM_PriceGroups 
       - name: Upload the artifact
         uses: actions/upload-artifact@v3
         with:
