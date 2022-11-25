@@ -3,7 +3,7 @@ run-name: Validating Release PR
 on: 
   pull_request:
     branches:
-      - 'main'
+      - 'release'
 jobs:
   Validate-Changed-Files:
     runs-on: ubuntu-latest
