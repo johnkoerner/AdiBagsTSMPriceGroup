@@ -1,0 +1,37 @@
+name: Zip and Publish
+run-name: Publishing a new version
+on: 
+  push:
+    branches:
+      - 'release'
+jobs:
+  Zip-Content:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - run: mkdir .output
+      - run: | 
+             ls -al ${{ github.workspace }}
+      - name: Zip It Up
+        run: zip -r .output/AdiBags_TSM_Price_Groups.zip ./AdiBags_TSM_Price_Groups
+      - name: Upload the artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: SourceForge-Artifact
+          path: .output/AdiBags_TSM_Price_Groups.zip
+      - name: Read CHANGELOG file
+        id: getchangelog
+        uses: andstor/file-reader-action@v1
+        with:
+          path: "./CHANGELOG.MD"
+      - name: Upload to SourceForge-Artifact
+        uses: itsmeow/curseforge-upload@v3
+        with:
+          file_path: ".output/AdiBags_TSM_Price_Groups.zip"
+          game_endpoint: "wow"
+          game_versions: "10.0.2"
+          project_id: "379893"
+          token: "${{ secrets.CF_TOKEN }}"
+          changelog: "${{ steps.getchangelog.outputs.contents }}"
+        
