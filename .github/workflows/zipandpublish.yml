@@ -22,7 +22,7 @@ jobs:
       - name: Zip It Up
         uses: "vimtor/action-zip@v1"
         with:
-          files: AdiBags_TSM_Price_Groups/
+          files: AdiBags_TSM_Price_Groups/**
           recursive: true
           dest: .output/AdiBags_TSM_PriceGroups.zip
       - name: Upload the artifact
