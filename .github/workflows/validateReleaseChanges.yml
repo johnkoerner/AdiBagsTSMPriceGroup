@@ -1,0 +1,32 @@
+name: Validate Release Pull Request
+run-name: Validating Release PR
+on: 
+  pull_request:
+    branches:
+      - 'release'
+jobs:
+  Validate-Changed-Files:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
+
+      # Example 1
+      - name: Get changed files
+        uses: tj-actions/changed-files@v34
+        id: verify-changed-files
+        with:
+          files: |
+             CHANGELOG.MD
+             ./AdiBags_TSM_Price_Groups/AdiBags_TSM_Price_Groups.toc
+
+      - name: Validate Changelog updated
+        if: contains(steps.verify-changed-files.outputs.changed_files, 'CHANGELOG.MD') == false
+        run: exit 1
+
+      - name: Validate TOC updated
+        if: contains(steps.verify-changed-files.outputs.changed_files, 'AdiBags_TSM_Price_Groups.toc') == false
+        run: exit 1
+
