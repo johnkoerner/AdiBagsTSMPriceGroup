@@ -9,7 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: mkdir .output
-      - run: ls
+      - run: | 
+             ls .
       - name: Zip It Up
         run: zip -r .output/AdiBags_TSM_Price_Groups.zip ./AdiBags_TSM_Price_Groups/
       - name: Upload the artifact
