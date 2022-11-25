@@ -24,7 +24,7 @@ jobs:
         id: getchangelog
         uses: andstor/file-reader-action@v1
         with:
-          path: "./CHANGELOG.md"
+          path: "./CHANGELOG.MD"
       - name: Upload to SourceForge-Artifact
         uses: itsmeow/curseforge-upload@v3
         with:
