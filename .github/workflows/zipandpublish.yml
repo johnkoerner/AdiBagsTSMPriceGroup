@@ -19,9 +19,9 @@ jobs:
   Zip-Content:
     runs-on: ubuntu-latest
     steps:
+      - run: mkdir .output
       - name: Zip It Up
-        run: mkdir .output
-      - run: zip -r .output/AdiBags_TSM_PriceGroups.zip  . -i ./AdiBags_TSM_PriceGroups 
+        run: zip -r .output/AdiBags_TSM_PriceGroups.zip ./AdiBags_TSM_PriceGroups 
       - name: Upload the artifact
         uses: actions/upload-artifact@v3
         with:
