@@ -10,7 +10,7 @@ jobs:
     steps:
       - run: mkdir .output
       - run: | 
-             ls ${{ github.workspace }}
+             ls -al ${{ github.workspace }}
       - name: Zip It Up
         run: zip -r ${{ github.workspace }}/.output/AdiBags_TSM_Price_Groups.zip ${{ github.workspace }}/AdiBags_TSM_Price_Groups/
       - name: Upload the artifact
