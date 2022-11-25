@@ -1,9 +1,9 @@
 name: Zip and Publish
 run-name: Publishing a new version
 on: 
-  pull_request:
+  push:
     branches:
-      - main
+      - 'release'
 jobs:
   Zip-Content:
     runs-on: ubuntu-latest
@@ -31,7 +31,6 @@ jobs:
           file_path: ".output/AdiBags_TSM_Price_Groups.zip"
           game_endpoint: "wow"
           game_versions: "10.0.2"
-          release_type: "alpha"
           project_id: "379893"
           token: "${{ secrets.CF_TOKEN }}"
           changelog: "${{ steps.getchangelog.outputs.contents }}"
