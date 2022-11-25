@@ -19,5 +19,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: code-coverage-report
-          path: .output/AdiBags_TSM_PriceGroups.zip
+          path: .output/AdiBags_TSM_Price_Groups.zip
         
